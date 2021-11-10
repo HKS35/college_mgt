@@ -1,0 +1,15 @@
+ $stream = $row['course'];
+            $table = "";
+            $column = "";
+            if($stream == "+2Science"){
+              $table = "science_table";
+              $column = "odia,english,math,physics,chemistry,botany,zoology";
+            }elseif ($stream == +2Arts) {
+            	 $table = "arts_table";
+                $column = "odia,english,history,geography,poltical science,life science";
+            }elseif ($stream == +2Commerse) {
+            	 $table = "commerse_table";
+                $column = "odia,english,math,business,accounts,company";
+            }
+           }
+      ?><h1 style="text-align: center;">Registration Form</h1>

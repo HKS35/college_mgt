@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>College Management System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" type="text/css" href="/college/style.css">
+   
+    <script type="text/javascript" src="/college/script.js"></script>
+     
+  </head>
+  <body>
+
+
+
+
+<div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <ul>
+        <li>
+          <a href="#"><i class="fa fa-dashboard mr-2"></i>Dashboard</a>
+        </li>
+        <li>
+          <a href="#"><i class="fa fa-user mr-3"></i>Faculty</a>
+          <ul class="p-0 m-0">
+            <li>
+              <div class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-users mr-3"></i>
+                  Students
+                </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#"><i class="fa fa-plus-square mr-3"></i>Add Student</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#"><i class="fa fa-pencil-square-o mr-2"></i>Edit Student</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="viewstudent.php"><i class="fa fa-eye mr-2"></i>View Student</a>
+                  <div class="dropdown-divider"></div>
+                  
+                </div>
+              </div>
+            </li>
+            <li>
+              <a href=""><i class="fa fa-address-card mr-3"></i>Streams</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><i class="fa fa-bar-chart mr-3"></i>Attendance</a>
+        </li>
+        <li>
+          <div class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-trophy mr-3"></i>
+              Results
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#"><i class="fa fa-plus-square mr-3"></i>Add Result</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#"><i class="fa fa-pencil-square-o mr-2"></i>Edit Result</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#"><i class="fa fa-eye mr-2"></i>View Result</a>
+              <div class="dropdown-divider"></div>
+              
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#"><i class="fa fa-bullhorn mr-3"></i>Notice</a>
+        </li>
+        <li>
+          <a href="#"><i class="fa fa-bed mr-3"></i>Hostel</a>
+        </li>
+        
+      </ul>
+      </div>
+      <div id="main">
+      <nav style="background-color: #f8f2f2; border-bottom:1px solid #eee6e6; ">
+        <a href="void: 0" onclick="openNav()" id="open"><i class="fa fa-bars text-dark" style="font-size: 22px;"> </i></a>
+        <div class="float-right">
+           <div class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-md mr-3"></i>
+              Admin
+            </a>
+            <div class="dropdown-menu" style="width: 50px;">
+              <a class="dropdown-item" href="/college/admin/logout.php">Logout</a>
+              
+              
+            </div>
+          </div>
+        </div>
+      </nav>
+      <?php include('../connection.php');  ?>
+      <?php
+           if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            $sql = "select * from add_student where id = $id";
+            $result = mysqli_query($conn,$sql);
+            $row = mysqli_fetch_assoc($result);
+           }
+      ?>
+      
+         <form method="post" action="edit_action.php">
+           id:
+           <input type="text" name="id" value="<?php  echo $row['id']; ?>">
+           applicant  name:
+           <input type="text" name="aname" value="<?php  echo $row['aname'];  ?>">
+          
+                father  name:
+               <input type="text" name="fname" value="<?php  echo $row['fname'];  ?>">
+               
+                mother  name:
+                <input type="text" name="mname" value="<?php  echo $row['mname'];  ?>">
+                
+          
+           email:
+           <input type="text" name="email" value="<?php  echo $row['email']; ?>">
+           mobile no:
+           <input type="text" name="mobile_no" value="<?php  echo $row['mobile_no']; ?>">
+           catagory:
+           <input type="text" name="catagory" value="<?php  echo $row['catagory']; ?>">
+            course:
+           <input type="text" name="course" value="<?php  echo $row['course']; ?>">
+           gender:
+           <input type="text" name="gender" value="<?php  echo $row['gender']; ?>">
+           dob:
+           <input type="text" name="dob" value="<?php  echo $row['dob']; ?>">
+           religion:
+           <input type="text" name="religion" value="<?php  echo $row['religion']; ?>">
+           school name:
+           <input type="text" name="school_name" value="<?php  echo $row['school_name']; ?>">
+           full mark:
+           <input type="text" name="fmark" value="<?php  echo $row['fmark']; ?>">
+           aquire mark:
+           <input type="text" name="amark" value="<?php  echo $row['amark']; ?>">
+           faddress:
+           <input type="text" name="faddress" value="<?php  echo $row['faddress']; ?>">
+            saddress:
+           <input type="text" name="saddress" value="<?php  echo $row['saddress']; ?>">
+           upload ur image:
+           <input type="file" name="img" value="<?php  echo $row['img']; ?>">
+            upload ur signature:
+           <input type="file" name="sign" value="<?php  echo $row['sign']; ?>">
+            upload ur certificate:
+           <input type="file" name="certificate" value="<?php  echo $row['certificate']; ?>">
+            upload ur marksheet:
+           <input type="file" name="certificate" value="<?php  echo $row['marksheet']; ?>">
+           
+           <button type="submit" name="submit" class="btn btn-info btn-block">submit</button>
+         </form>
+
+
+
+
+
+
+
+
+
+         value="<?php  echo $row['gender'];  ?>"
